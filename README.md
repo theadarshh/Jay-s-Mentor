@@ -155,5 +155,3 @@ Adarsh R – [adarshr3131@gmail.com](mailto:adarshr3131@gmail.com)
 
 Project Link: [https://github.com/theadarshh/Jay-s-Mentor](https://github.com/theadarshh/Jay-s-Mentor)
 
-```
-
