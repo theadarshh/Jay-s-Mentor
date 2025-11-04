@@ -1,9 +1,9 @@
 package com.jaysmentor.backend.repository;
 
-import com.jaysmentor.backend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.Optional;
+import com.jaysmentor.backend.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByEmail(String email);
+    // You can add custom queries later, like:
+    User findByEmail(String email);
 }
