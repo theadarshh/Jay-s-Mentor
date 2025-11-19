@@ -1,0 +1,6 @@
+/* src/components/Footer.css */
+.site-footer { background:#081827; color:#fff; padding:28px 16px 8px; margin-top:40px; }
+.footer-inner { display:flex; justify-content:space-between; max-width:1200px; margin:0 auto; gap:20px; }
+.footer-inner h3 { margin:0 0 6px; color:#ffd700; }
+.footer-bottom { text-align:center; margin-top:14px; opacity:0.8; font-size:14px; }
+@media (max-width:800px){ .footer-inner { flex-direction:column; text-align:center; } }

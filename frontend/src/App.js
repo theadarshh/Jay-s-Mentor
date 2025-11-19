@@ -1,25 +1,28 @@
+// src/App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+import Landing from "./pages/Landing";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import AdminDashboard from "./components/AdminDashboard";
+import MentorDashboard from "./components/MentorDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <Router>
-      <div style={{ textAlign: "center", marginTop: "30px" }}>
-        <h1>Jay's Mentor Platform</h1>
-        <nav>
-          <Link to="/signup" style={{ margin: "0 10px" }}>Signup</Link>
-          <Link to="/login" style={{ margin: "0 10px" }}>Login</Link>
-          <Link to="/dashboard" style={{ margin: "0 10px" }}>Dashboard</Link>
-        </nav>
-      </div>
       <Routes>
-        <Route path="/" element={<Signup />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+        <Route path="/admin" element={<ProtectedRoute><AdminDashboard/></ProtectedRoute>} />
+        <Route path="/mentor" element={<ProtectedRoute><MentorDashboard/></ProtectedRoute>} />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );

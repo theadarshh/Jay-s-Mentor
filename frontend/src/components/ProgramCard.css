@@ -1,0 +1,9 @@
+/* src/components/ProgramCard.css */
+.program-card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 10px 20px rgba(10,20,40,0.08); border:1px solid #f0f4f8; min-width:260px; }
+.program-card-header { display:flex; justify-content:space-between; align-items:center; }
+.program-card h4 { margin:0; color:#0a3a66; }
+.price { color:#ffd700; font-weight:700; }
+.program-sub { color:#374151; margin:12px 0 18px; }
+.program-actions { display:flex; gap:10px; }
+.btn-outline { background:transparent; border:1px solid #0a6fb8; padding:8px 12px; border-radius:8px; color:#0a6fb8; cursor:pointer; }
+.btn-solid { background:#0a6fb8; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; }

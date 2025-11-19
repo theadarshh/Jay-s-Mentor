@@ -1,0 +1,19 @@
+/* src/components/Navbar.css */
+.site-nav {
+  background: linear-gradient(90deg, #0f4c81 0%, #0a6fb8 100%);
+  color: white;
+  padding: 14px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 18px rgba(10, 30, 60, 0.15);
+}
+.nav-inner { display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; }
+.brand { display:flex; gap:12px; align-items:center; cursor:pointer; }
+.brand-img { width:48px; height:48px; border-radius:50%; object-fit:cover; border:2px solid #ffd700; }
+.brand-title { font-weight:700; font-size:18px; }
+.brand-sub { font-size:12px; opacity:0.9; }
+.nav-links a { color:white; margin-left:16px; text-decoration:none; font-weight:500; }
+.btn-outline { border:1px solid rgba(255,255,255,0.6); padding:6px 10px; border-radius:6px; }
+.btn-solid { background:#ffd700; color:#08203a; padding:8px 12px; border-radius:6px; margin-left:8px; font-weight:700; }
+@media (max-width:800px){ .nav-links { display:none; } }
