@@ -1,28 +1,29 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 
-function App() {
+import Home from './pages/Home';
+import Landing from './pages/Landing';
+import Signup from './pages/Signup';
+import VerifyOtp from './pages/VerifyOtp';
+import Login from './pages/Login';
+import UserDashboard from './pages/UserDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+
+export default function App() {
   return (
-    <Router>
-      <div style={{ textAlign: "center", marginTop: "30px" }}>
-        <h1>Jay's Mentor Platform</h1>
-        <nav>
-          <Link to="/signup" style={{ margin: "0 10px" }}>Signup</Link>
-          <Link to="/login" style={{ margin: "0 10px" }}>Login</Link>
-          <Link to="/dashboard" style={{ margin: "0 10px" }}>Dashboard</Link>
-        </nav>
-      </div>
+    <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Signup />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path='/' element={<Landing/>} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/verify' element={<VerifyOtp />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/dashboard/user' element={<ProtectedRoute><UserDashboard/></ProtectedRoute>} />
+        <Route path='/dashboard/admin' element={<ProtectedRoute><AdminDashboard/></ProtectedRoute>} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
-
-export default App;
