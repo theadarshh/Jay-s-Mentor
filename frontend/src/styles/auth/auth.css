@@ -1,0 +1,64 @@
+.auth-bg{
+ min-height:100vh;
+ background:
+ linear-gradient(135deg,#020617dd,#020617dd),
+ url("https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d");
+ background-size:cover;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-family:Segoe UI;
+}
+
+.auth-card{
+ width:380px;
+ background:rgba(2,6,23,.9);
+ padding:45px;
+ border-radius:22px;
+ box-shadow:0 20px 60px rgba(0,0,0,.6);
+ color:#fff;
+ text-align:center;
+}
+
+.auth-card h1{
+ margin-bottom:10px;
+}
+
+.auth-card p{
+ opacity:.75;
+ margin-bottom:25px;
+}
+
+.auth-card input{
+ width:100%;
+ padding:14px;
+ margin:10px 0;
+ border:none;
+ border-radius:12px;
+ background:#020617;
+ color:#fff;
+ outline:none;
+}
+
+.auth-card button{
+ margin-top:20px;
+ width:100%;
+ padding:14px;
+ border:none;
+ border-radius:30px;
+ background:#22c55e;
+ font-weight:800;
+ cursor:pointer;
+}
+
+.auth-card span{
+ display:block;
+ margin-top:20px;
+ opacity:.8;
+}
+
+.auth-card a{
+ color:#22c55e;
+ text-decoration:none;
+ font-weight:700;
+}

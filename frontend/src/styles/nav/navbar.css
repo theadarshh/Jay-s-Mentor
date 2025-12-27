@@ -1,0 +1,14 @@
+.nav{
+ display:flex;
+ justify-content:space-between;
+ padding:20px 50px;
+ background:#000;
+ color:#fff;
+ font-family:"Segoe UI";
+}
+.nav a{
+ margin-left:20px;
+ text-decoration:none;
+ color:#22c55e;
+ font-weight:600;
+}

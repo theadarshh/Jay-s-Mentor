@@ -1,21 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-const client = axios.create({
-  baseURL: 'http://localhost:8080',
-  headers: { 'Content-Type': 'application/json' }
+const client=axios.create({
+ baseURL:"https://api.rediscoverulife.com"
 });
 
-// Add JWT auth header automatically
-client.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers = config.headers || {};
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+client.interceptors.request.use(c=>{
+ const t=localStorage.getItem("token");
+ if(t) c.headers.Authorization="Bearer "+t;
+ return c;
+});
 
 export default client;

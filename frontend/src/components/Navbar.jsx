@@ -1,19 +1,14 @@
-import { Link } from 'react-router-dom';
-import { isLoggedIn, logout } from '../api/auth';
+import "../styles/nav/navbar.css";
 
 export default function Navbar(){
-  const logged = isLoggedIn();
-  return (
-    <nav style={{ padding: '10px', borderBottom: '1px solid #ddd' }}>
-      <Link to="/">Home</Link> |
-      <Link to="/signup"> Signup</Link> |
-      <Link to="/login"> Login</Link>
-      {logged && (
-        <>
-          {' '}| <Link to="/dashboard/user">Dashboard</Link>
-          {' '}| <button style={{background:'none',border:'none',color:'#00f',textDecoration:'underline',cursor:'pointer'}} onClick={() => { logout(); window.location = '/login'; }}>Logout</button>
-        </>
-      )}
-    </nav>
-  );
+ return(
+  <nav className="nav">
+   <h2>Jay’s Mentor</h2>
+   <div>
+    <a href="/">Home</a>
+    <a href="/subscribe">Programs</a>
+    <a href="/login">Login</a>
+   </div>
+  </nav>
+ );
 }

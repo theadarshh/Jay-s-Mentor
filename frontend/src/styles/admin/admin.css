@@ -1,0 +1,47 @@
+.admin-bg{
+ min-height:100vh;
+ background:
+ linear-gradient(135deg,#020617ee,#020617ee),
+ url("https://images.unsplash.com/photo-1506784983877-45594efa4cbe");
+ background-size:cover;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ font-family:Segoe UI;
+}
+
+.admin-card{
+ width:420px;
+ background:rgba(2,6,23,.95);
+ padding:50px;
+ border-radius:22px;
+ color:#fff;
+ text-align:center;
+ box-shadow:0 20px 70px rgba(0,0,0,.7);
+}
+
+.admin-card h1{
+ margin-bottom:6px;
+}
+
+.admin-card p{
+ opacity:.75;
+ margin-bottom:25px;
+}
+
+.admin-card button{
+ width:100%;
+ padding:14px;
+ margin:10px 0;
+ border:none;
+ border-radius:30px;
+ background:#facc15;
+ font-weight:800;
+ cursor:pointer;
+}
+
+.admin-card small{
+ display:block;
+ margin-top:25px;
+ opacity:.6;
+}

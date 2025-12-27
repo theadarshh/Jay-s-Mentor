@@ -36,7 +36,11 @@ public class VerificationController {
     public ResponseEntity<?> sendVerification(@Valid @RequestBody SendRequest req) {
         var user = userRepository.findByEmail(req.email).orElse(null);
         if (user == null) return ResponseEntity.badRequest().body(Map.of("error","No user with that email"));
+        if (user.getSubscriptionStatus() != User.SubscriptionStatus.PAID) {
+            return ResponseEntity.badRequest().body(Map.of("error","Subscription not completed"));
+        }
         if (user.isEnabled()) return ResponseEntity.badRequest().body(Map.of("error","User already verified"));
+
         try {
             String otp = verificationService.createTokenFor(req.email);
             return ResponseEntity.ok(Map.of("message","OTP sent","otp", otp));
@@ -47,8 +51,43 @@ public class VerificationController {
 
     @PostMapping("/confirm")
     public ResponseEntity<?> confirmVerification(@Valid @RequestBody ConfirmRequest req) {
+        var user = userRepository.findByEmail(req.email).orElse(null);
+        if (user == null) return ResponseEntity.badRequest().body(Map.of("error","No user with that email"));
+        if (user.getSubscriptionStatus() != User.SubscriptionStatus.PAID) {
+            return ResponseEntity.badRequest().body(Map.of("error","Subscription not completed"));
+        }
         boolean ok = verificationService.verifyToken(req.otp, req.email);
         if (!ok) return ResponseEntity.badRequest().body(Map.of("error","Invalid or expired OTP"));
         return ResponseEntity.ok(Map.of("message","Email verified"));
+    }
+
+    @PostMapping("/resend")
+    public ResponseEntity<?> resend(@RequestBody Map<String,String> body) {
+        String email = body.get("email");
+
+        if (email == null || email.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error","Email is required"));
+        }
+
+        var user = userRepository.findByEmail(email).orElse(null);
+        if (user == null) {
+            return ResponseEntity.badRequest().body(Map.of("error","User not found"));
+        }
+
+        if (user.getSubscriptionStatus() != User.SubscriptionStatus.PAID) {
+            return ResponseEntity.badRequest().body(Map.of("error","Subscription not completed"));
+        }
+
+        if (user.isEnabled()) {
+            return ResponseEntity.badRequest().body(Map.of("error","User already verified"));
+        }
+
+        try {
+            String otp = verificationService.createTokenFor(email);
+            return ResponseEntity.ok(Map.of("message","OTP resent","otp",otp));
+        } catch (Exception ex) {
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error","Failed to resend OTP","details", ex.getMessage()));
+        }
     }
 }

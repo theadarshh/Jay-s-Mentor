@@ -1,0 +1,14 @@
+.admin{
+ padding:60px;
+ font-family:"Segoe UI";
+}
+.admin button{
+ display:block;
+ margin:15px 0;
+ padding:14px;
+ width:300px;
+ border-radius:20px;
+ border:none;
+ background:#facc15;
+ font-weight:800;
+}

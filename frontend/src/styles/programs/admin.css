@@ -1,0 +1,31 @@
+.admin-bg{
+ min-height:100vh;
+ background:#020617;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:white;
+ font-family:Segoe UI;
+}
+
+.admin-card{
+ background:#020617dd;
+ padding:50px;
+ border-radius:20px;
+ width:480px;
+ box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+.admin-card ul{
+ margin:20px 0;
+}
+
+.admin-card li{
+ margin:12px 0;
+ font-weight:600;
+}
+
+.note{
+ opacity:.7;
+ margin-top:20px;
+}

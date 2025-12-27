@@ -1,0 +1,27 @@
+.hero{
+ min-height:100vh;
+ background:url("https://images.unsplash.com/photo-1506784983877-45594efa4cbe");
+ background-size:cover;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+.hero-card{
+ background:rgba(0,0,0,.75);
+ padding:60px;
+ border-radius:20px;
+ text-align:center;
+ color:white;
+ font-family:Segoe UI;
+}
+.hero-card h1{color:#facc15;font-size:42px}
+.hero-card a{
+ display:inline-block;
+ margin-top:20px;
+ padding:14px 30px;
+ background:#22c55e;
+ color:black;
+ font-weight:700;
+ border-radius:30px;
+ text-decoration:none;
+}

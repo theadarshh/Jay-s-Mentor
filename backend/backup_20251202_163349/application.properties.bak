@@ -1,0 +1,26 @@
+# Database - change username/password/url as needed
+spring.datasource.url=jdbc:mysql://localhost:3306/jaysmentor_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# JWT - ensure this secret is long (>=32 chars) in production
+jwt.secret=qW3rT!yU7iO$pA5sD&fG1hJ2kL%zX9c*V8bN^m@
+jwt.expiration-ms=86400000
+
+# Mail - replace with valid SMTP settings to enable email sending
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=adarshr3105@gmail.com
+spring.mail.password=fzdw vrbc hgbr ahyq
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+
+# CORS allowed origin for dev (frontend)
+app.frontend.origin=http://localhost:3000

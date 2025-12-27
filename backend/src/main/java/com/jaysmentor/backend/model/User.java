@@ -29,6 +29,18 @@ public class User {
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    // NEW - subscription fields
+    public enum SubscriptionStatus {
+        PENDING,
+        PAID
+    }
+
+    @Enumerated(EnumType.STRING)
+    private SubscriptionStatus subscriptionStatus = SubscriptionStatus.PENDING;
+
+    private String paymentId;
+    private Long paymentAmount; // in smallest currency unit (e.g., paise)
+
     // Getters & setters
 
     public Long getId() { return id; }
@@ -54,4 +66,13 @@ public class User {
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public SubscriptionStatus getSubscriptionStatus() { return subscriptionStatus; }
+    public void setSubscriptionStatus(SubscriptionStatus subscriptionStatus) { this.subscriptionStatus = subscriptionStatus; }
+
+    public String getPaymentId() { return paymentId; }
+    public void setPaymentId(String paymentId) { this.paymentId = paymentId; }
+
+    public Long getPaymentAmount() { return paymentAmount; }
+    public void setPaymentAmount(Long paymentAmount) { this.paymentAmount = paymentAmount; }
 }

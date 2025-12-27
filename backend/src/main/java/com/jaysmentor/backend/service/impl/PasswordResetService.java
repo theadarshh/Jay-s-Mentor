@@ -19,24 +19,34 @@ public class PasswordResetService {
     @Autowired
     private UserRepository users;
 
-    public String createResetOtp(String email){
+    private static final int OTP_EXPIRY_MINUTES = 10;
+    private static final int MAX_REQUESTS_PER_HOUR = 5;
+
+    public String createResetOtp(String email) {
         User u = users.findByEmail(email).orElse(null);
-        if(u == null) return null;
+        if (u == null) return null;
+
+        LocalDateTime oneHourAgo = LocalDateTime.now().minusHours(1);
+        long recentCount = repo.countByEmailAndCreatedAtAfter(email, oneHourAgo);
+        if (recentCount >= MAX_REQUESTS_PER_HOUR) {
+            return null;
+        }
 
         String otp = String.format("%06d", new Random().nextInt(1_000_000));
         PasswordResetToken t = new PasswordResetToken();
         t.setEmail(email);
         t.setToken(otp);
-        t.setExpiresAt(LocalDateTime.now().plusMinutes(10));
+        t.setCreatedAt(LocalDateTime.now());
+        t.setExpiresAt(LocalDateTime.now().plusMinutes(OTP_EXPIRY_MINUTES));
         t.setUsed(false);
         repo.save(t);
         return otp;
     }
 
-    public boolean verifyOtp(String email, String otp){
+    public boolean verifyOtp(String email, String otp) {
         var t = repo.findByEmailAndToken(email, otp).orElse(null);
-        if(t == null || t.isUsed()) return false;
-        if(t.getExpiresAt().isBefore(LocalDateTime.now())) return false;
+        if (t == null || t.isUsed()) return false;
+        if (t.getExpiresAt().isBefore(LocalDateTime.now())) return false;
         t.setUsed(true);
         repo.save(t);
         return true;

@@ -1,40 +1,19 @@
-import { useState } from 'react';
-import client from '../api/axiosClient';
-import { useNavigate } from 'react-router-dom';
+import "../styles/auth.css";
 
-export default function Login() {
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+export default function Login(){
+ return(
+  <div className="auth-bg">
+   <div className="auth-card">
+    <h2>Welcome Back</h2>
+    <p>Login to continue your growth</p>
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await client.post('/api/auth/login', {
-        identifier,
-        password
-      });
+    <input placeholder="Email or Phone"/>
+    <input type="password" placeholder="Password"/>
 
-      localStorage.setItem('token', res.data.token);
-      setMessage('Login success! Redirecting...');
-      navigate('/dashboard/user');
-    } catch (err) {
-      setMessage(err.response?.data?.error || 'Login failed');
-    }
-  };
+    <button>Login</button>
 
-  return (
-    <div style={{ padding: '20px' }}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input type='text' placeholder='Email or Phone' value={identifier} onChange={(e)=>setIdentifier(e.target.value)} required />
-        <br/><br/>
-        <input type='password' placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)} required />
-        <br/><br/>
-        <button type='submit'>Login</button>
-      </form>
-      <p>{message}</p>
-    </div>
-  );
+    <span>New here? <a href="/signup">Create account</a></span>
+   </div>
+  </div>
+ );
 }

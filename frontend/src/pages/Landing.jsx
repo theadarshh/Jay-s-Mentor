@@ -7,7 +7,7 @@ export default function Landing(){
         <img src='/mnt/data/0f6489b0-b2d4-4ef3-bd30-777a57d4c809.png' alt='hero' style={{ width:160, height:100, objectFit:'cover', borderRadius:8 }} />
         <div>
           <h1>JAYS MENTOR</h1>
-          <p>Learn, Practice, Succeed — Simple mentorship platform (demo)</p>
+          <p>Learn, Practice, Succeed â€” Simple mentorship platform (demo)</p>
         </div>
       </header>
 

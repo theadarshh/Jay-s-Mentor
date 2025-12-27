@@ -1,0 +1,32 @@
+.pay-bg{
+ min-height:100vh;
+ background:url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
+ background-size:cover;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-family:"Segoe UI";
+}
+
+.pay-card{
+ background:rgba(0,0,0,.8);
+ padding:50px;
+ border-radius:18px;
+ color:#fff;
+ text-align:center;
+ width:360px;
+}
+
+.pay-card h1{margin-bottom:15px;}
+.pay-card h2{color:#22c55e;font-size:36px;}
+
+button{
+ margin-top:25px;
+ padding:14px;
+ width:100%;
+ border:none;
+ border-radius:25px;
+ background:#facc15;
+ font-weight:800;
+ cursor:pointer;
+}
